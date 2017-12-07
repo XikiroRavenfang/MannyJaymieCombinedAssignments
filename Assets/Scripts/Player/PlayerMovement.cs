@@ -4,20 +4,17 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerStats))]
-[RequireComponent(typeof(PlayerActions))]
 public class PlayerMovement : MonoBehaviour
 {
     public float jumpForce = 5f;
     public float speedMulti = 20f;
 
     private PlayerStats pStats;
-    private PlayerActions pActions;
     private Vector3 moveDir = Vector3.zero;
     private Rigidbody rigid;
     // Use this for initialization
     void Awake()
     {
-        pActions = GetComponent<PlayerActions>();
         pStats = GetComponent<PlayerStats>();
         rigid = GetComponent<Rigidbody>();
     }
@@ -25,8 +22,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!pActions.inAction)
-            Movement();
+        Movement();
     }
     void Movement()
     {
